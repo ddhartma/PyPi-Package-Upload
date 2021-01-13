@@ -37,114 +37,123 @@ Generaldistribution.py is a module for Gaussiandistribution.py
 
 ## Making a package
 
-1. In order to create a Python package an ```__init__.py``` file is needed in the ```distributions```folder. In this example its content is:
-  ```
-  from .Gaussiandistribution import Gaussian
-  from .Binomialdistribution import Binomial
-  ```
-  - The reason for adding these lines is to import the Gaussian/Binomial classes directly.
-  - Without these lines the program will still work.
-  - But one would have to import (e.g.) the Gaussian class more indirectly with the line ```from distributions.Gaussiandistribution import Gaussian```.
-  - It's like a shortcut for imports.
+1. In order to create a Python package an ```__init__.py``` file is needed in the ```distributions```folder. 
+
+    In this example its content is:
+    ```
+    from .Gaussiandistribution import Gaussian
+    from .Binomialdistribution import Binomial
+    ```
+    - The reason for adding these lines is to import the Gaussian/Binomial classes directly.
+    - Without these lines the program will still work.
+    - But one would have to import (e.g.) the Gaussian class more indirectly with the line ```from distributions.Gaussiandistribution import Gaussian```.
+    - It's like a shortcut for imports.
 
 
 2. One level back in the directory there is a ```setup.py```file.
-  ```
-  from setuptools import setup
+    ```
+    from setuptools import setup
 
-  setup(name='distributions',
-    version='0.1',
-    description='Gaussian distributions',
-    packages=['distributions'],
-    zip_safe=False)
-  ```
-  - It's necessary for pip installing.
-  - Pip will automatically look for this file.
-  - It contains information or metadata about the package like the package name, version, description, etc.
-  - Every package on PyPi needs a unique name. So change the name if needed.
-  - Use here the same name as the package name.
-  - zip_safe=False means - it cannot be run directly from a zip file
-  - Further details can be found here: [tutorial on distributing packages](https://packaging.python.org/tutorials/packaging-projects/)
+    setup(name='distributions',
+      version='0.1',
+      description='Gaussian distributions',
+      packages=['distributions'],
+      zip_safe=False)
+    ```
+    - It's necessary for pip installing.
+    - Pip will automatically look for this file.
+    - It contains information or metadata about the package like the package name, version, description, etc.
+    - Every package on PyPi needs a unique name. So change the name if needed.
+    - Use here the same name as the package name.
+    - zip_safe=False means - it cannot be run directly from a zip file
+    - Further details can be found here: [tutorial on distributing packages](https://packaging.python.org/tutorials/packaging-projects/)
 
 
 3. Create a virtual environment
-  Using Anaconda
-  ```
-  conda create --name environmentname
-  source activate environmentname
-  ```
 
-  Using Pip and Venv
-  ```
-  python3 -m venv environmentname
-  source environmentname/bin/activate
-  ```
+    Using Anaconda
+    ```
+    conda create --name environmentname
+    conda activate environmentname
+    ```
+
+    Using Pip and Venv
+    - cd to the directory with the ```setup.py``` file
+    - In the terminal enter
+    ```
+    pip install virtualenv
+    virtualenv environmentname
+    source environmentname/bin/activate
+    ```
 
 
 4. Install the package locally (first test)
-  - cd to the directory with the ```setup.py``` file
-  - In the terminal enter
-  ```
-  pip install .
-  ```
-  The dot tells pip to look for the setup file in the current folder.
+
+    - cd to the directory with the ```setup.py``` file
+    - In the terminal enter
+    ```
+    pip install .
+    ```
+    The dot tells pip to look for the setup file in the current folder.
 
 
 5. Test the package installation like so
-  - Open a new terminal (it does not matter to be in the package example folder, as the package is installed)
-  - Type in ```python``` to start the interpreter
-  - Try for example
-  ```
-  from distributions import Gaussian
-  ```
-  - If no error occurs the package is successfully installed
+
+    - Open a new terminal (it does not matter to be in the package example folder, as the package is installed)
+    - Type in ```python``` to start the interpreter
+    - Try for example
+    ```
+    from distributions import Gaussian
+    ```
+    - If no error occurs the package is successfully installed
 
 
-6. To find the location of the package inbstallation try
-  ```
-  import distributions
-  distributions.__file__
-  ```
+6. To find the location of the package installation try
+    ```
+    import distributions
+    distributions.__file__
+    ```
 
 7. Register on PyPi vs. Test PyPi
-  Go to the websites and register there
-  - [pypi.org](https://pypi.org/)
-  - [test.pypy.org](https://test.pypi.org/)
+    Go to the websites and register there
+    - [pypi.org](https://pypi.org/)
+    - [test.pypy.org](https://test.pypi.org/)
 
 
 8. In the distributions folder add a ```license.txt``` file.
-  - Add a license text
-  - Use the [MIT license](https://opensource.org/licenses/MIT)
+    - Add a license text
+    - Use the [MIT license](https://opensource.org/licenses/MIT)
 
 
 9. In the distributions folder add a README.md file
-  - This file contains the description and usage of the package
-  - It will be shown on PyPi
+    - This file contains the description and usage of the package
+    - It will be shown on PyPi
 
 
 10. Create a file called ```setup.cfg```
-  It contains data about the README.md file
-  ```
-  [metadata]
-  description-file = README.md
-  ```
+
+    It contains data about the README.md file
+    ```
+    [metadata]
+    description-file = README.md
+    ```
 
 11. ```cd``` to the folder with ```setup.py```. Write in the terminal:
-  ```
-  python setup.py sdist
-  pip install twine
+    ```
+    python setup.py sdist
+    pip install twine
 
-  # commands to upload to the pypi test repository
-  twine upload --repository-url https://test.pypi.org/legacy/ dist/*
-  pip install --index-url https://test.pypi.org/simple/ distributions
+    # commands to upload to the pypi test repository
+    twine upload --repository-url https://test.pypi.org/legacy/ dist/*
+    pip install --index-url https://test.pypi.org/simple/ distributions
 
-  # command to upload to the pypi repository
-  twine upload dist/*
-  pip install distributions
-  ```
+    # command to upload to the pypi repository
+    twine upload dist/*
+    pip install distributions
+    ```
 
-  - You need username and password
-  - Both for PyPi and Pypi test
+    - You need username and password
+    - Both for PyPi and Pypi test
 
 
 12. In case of an error (e.g. a dublicate):
@@ -158,9 +167,9 @@ Generaldistribution.py is a module for Gaussiandistribution.py
 
 
 14. For a package installation write the following
-  ```
-  pip install distributions
-  ```
+    ```
+    pip install distributions
+    ```
 
 ## Setup Instructions
 
@@ -239,4 +248,4 @@ jupyter notebook 0_CRISP_DM_template.ipynb
 - **README.md** - the readme file of this repository.
 
 ## Acknowledgments
-* The categorical CategoricalTransformer class in this work was developed by [Guy Kahana & Anat Peled](https://www.kaggle.com/anatpeled/spotify-popularity-prediction/comments)
+* Thanks to [Udacity](https://www.udacity.com/) for their great Data Science and Machine Learning Nanodegree programs
