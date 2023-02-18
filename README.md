@@ -29,7 +29,7 @@ In this repo package example there are the files in the same ```distributions```
 - Generaldistribution.py
 
 The Gaussiandistribution.py file imports the Distribution class of Generaldistribution.py via
-```
+```python
 from .Generaldistribution import Distribution
 ```
 
@@ -40,7 +40,7 @@ Generaldistribution.py is a module for Gaussiandistribution.py
 1. In order to create a Python package an ```__init__.py``` file is needed in the ```distributions```folder.
 
     In this example its content is:
-    ```
+    ```python
     from .Gaussiandistribution import Gaussian
     from .Binomialdistribution import Binomial
     ```
@@ -161,7 +161,7 @@ If you want to use your local packages in other conda environments you should do
     ```
 
 11. ```cd``` to the folder with ```setup.py```. Write in the terminal:
-    ```
+    ```sh
     python setup.py sdist
     pip install twine
 
@@ -189,7 +189,7 @@ If you want to use your local packages in other conda environments you should do
 
 
 14. For a package installation write the following
-    ```
+    ```sh
     pip install distributions
     ```
 
@@ -204,32 +204,32 @@ These instructions will get you a copy of the project up and running on your loc
 - If you need a good Command Line Interface (CLI) under Windowsa you could use [git](https://git-scm.com/). Under Mac OS use the pre-installed Terminal.
 
 - Upgrade Anaconda via
-```
-$ conda upgrade conda
-$ conda upgrade --all
+```sh
+conda upgrade conda
+conda upgrade --all
 ```
 
 - Optional: In case of trouble add Anaconda to your system path. Write in your CLI
-```
-$ export PATH="/path/to/anaconda/bin:$PATH"
+```sh
+export PATH="/path/to/anaconda/bin:$PATH"
 ```
 
 ### Clone the project
 - Open your Command Line Interface
 - Change Directory to your project older, e.g. `cd my_github_projects`
 - Clone the Github Project inside this folder with Git Bash (Terminal) via:
-```
-$ git clone https://github.com/ddhartma/PyPi-Package-Upload.git
+```sh
+git clone https://github.com/ddhartma/PyPi-Package-Upload.git
 ```
 
 - Change Directory
-```
-$ cd PyPi-Package-Upload
+```sh
+cd PyPi-Package-Upload
 ```
 
 - Create a new Python environment. Inside Git Bash (Terminal) write:
-```
-$ conda create --name pypi_package_maker
+```sh
+conda create --name pypi_package_maker
 ```
 
 - If you want to execute the Distribution example then install the following packages (via pip or conda)
@@ -243,11 +243,11 @@ scikit-learn = 0.21.2
 ```
 
 - Check the environment installation via
-```
-$ conda env list
+```sh
+conda env list
 ```
 
 - Activate the installed crisp_dm_analysis environment via
-```
-$ conda activate pypi_package_maker
+```sh
+conda activate pypi_package_maker
 ```
