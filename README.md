@@ -3,7 +3,7 @@
 This repository is a guide to build a Python package and to upload the package to PyPi.
 
 
-There are further helpful lin5ks here:
+There are further helpful links here:
 - [package building summary guide](https://packaging.python.org/guides/distributing-packages-using-setuptools/) from the Python website
 
 There is also a detailed explanation of distributing Python packages from Distutils:
@@ -37,7 +37,7 @@ Generaldistribution.py is a module for Gaussiandistribution.py
 
 ## Making a package
 
-1. In order to create a Python package an ```__init__.py``` file is needed in the ```distributions```folder. 
+1. In order to create a Python package an ```__init__.py``` file is needed in the ```distributions```folder.
 
     In this example its content is:
     ```
@@ -51,7 +51,7 @@ Generaldistribution.py is a module for Gaussiandistribution.py
 
 
 2. One level back in the directory there is a ```setup.py```file.
-    ```
+    ```python
     from setuptools import setup
 
     setup(name='distributions',
@@ -72,7 +72,7 @@ Generaldistribution.py is a module for Gaussiandistribution.py
 3. Create a virtual environment
 
     Using Anaconda
-    ```
+    ```sh
     conda create --name environmentname
     conda activate environmentname
     ```
@@ -80,10 +80,10 @@ Generaldistribution.py is a module for Gaussiandistribution.py
     Using Pip and Venv
     - cd to the directory with the ```setup.py``` file
     - In the terminal enter
-    ```
+    ```sh
     pip install virtualenv
     virtualenv environmentname
-    source environmentname/bin/activate
+    source environmentname/Scripts/activate
     ```
 
 
@@ -91,7 +91,7 @@ Generaldistribution.py is a module for Gaussiandistribution.py
 
     - cd to the directory with the ```setup.py``` file
     - In the terminal enter
-    ```
+    ```sh
     pip install .
     ```
     The dot tells pip to look for the setup file in the current folder.
@@ -102,17 +102,39 @@ Generaldistribution.py is a module for Gaussiandistribution.py
     - Open a new terminal (it does not matter to be in the package example folder, as the package is installed)
     - Type in ```python``` to start the interpreter
     - Try for example
-    ```
+    ```python
     from distributions import Gaussian
     ```
     - If no error occurs the package is successfully installed
 
 
 6. To find the location of the package installation try
-    ```
+    ```python
     import distributions
     distributions.__file__
     ```
+
+## Making changes in the package and test them locally
+Every time you change something in the modules ```Gaussiandistribution.py```or ```Generaldistribution.py``` do the following to activate the changes.
+  - cd to the directory with the ```setup.py``` file
+  - In the terminal enter
+  ```sh
+  pip install .
+  ```
+
+## Use local pip installations in other conda enviroments
+If you want to use your local packages in other conda environments you should do the following:
+  - Activate you conda environment
+  ```sh
+  conda activate YOUR_ENV_NAME
+  ```
+  - cd to the directory with the ```setup.py``` file
+  - In the terminal enter
+  ```sh
+  pip install .
+  ```
+
+## Upload to PyPi
 
 7. Register on PyPi vs. Test PyPi
     Go to the websites and register there
@@ -171,7 +193,7 @@ Generaldistribution.py is a module for Gaussiandistribution.py
     pip install distributions
     ```
 
-## Setup Instructions
+## Setup Instructions to get a local repo
 
 The following is a brief set of instructions on setting up a managed notebook instance, from which the notebooks can be completed and run.
 
@@ -197,20 +219,20 @@ $ export PATH="/path/to/anaconda/bin:$PATH"
 - Change Directory to your project older, e.g. `cd my_github_projects`
 - Clone the Github Project inside this folder with Git Bash (Terminal) via:
 ```
-$ git clone https://github.com/ddhartma/CRISP-DM-Template.git
+$ git clone https://github.com/ddhartma/PyPi-Package-Upload.git
 ```
 
 - Change Directory
 ```
-$ cd crisp_dm_analysis
+$ cd PyPi-Package-Upload
 ```
 
 - Create a new Python environment. Inside Git Bash (Terminal) write:
 ```
-$ conda create --name crisp_dm_analysis
+$ conda create --name pypi_package_maker
 ```
 
-- Install the following packages (via pip or conda)
+- If you want to execute the Distribution example then install the following packages (via pip or conda)
 ```
 numpy = 1.17.4
 pandas = 0.24.2
@@ -227,25 +249,5 @@ $ conda env list
 
 - Activate the installed crisp_dm_analysis environment via
 ```
-$ conda activate crisp_dm_analysis
+$ conda activate pypi_package_maker
 ```
-
-### Open and run the notebook
-Now that the repository has been cloned into the notebook instance you may navigate to the notebook. Run the notebook via
-
-```
-jupyter notebook 0_CRISP_DM_template.ipynb
-```
-### Attached files in the repository
-- **0_CRISP_DM_template.ipynb** - the main file of this repository containing a CRISP-DM analysis, all coding steps and the important results.
-- **plot_df** - a helper module containing three functions:
-  - plot_df_line
-  - plot_df_bar
-  - plot_df_pie
-
-  This module simplifies plotting line, bar and pie plots using matplotlib. It is called from the notebook and shortens the code for specially designed plots to a 'one code line'. This is done via default settings and overwriting them only when needed.  
-
-- **README.md** - the readme file of this repository.
-
-## Acknowledgments
-* Thanks to [Udacity](https://www.udacity.com/) for their great Data Science and Machine Learning Nanodegree programs
